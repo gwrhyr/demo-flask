@@ -1,0 +1,32 @@
+# last upd by gwrhyr
+# last upd on 2022/06/12
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres
+    restart: always
+    image: postgres
+    volumes:
+      - ./postgres-data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB}
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=${PASSWORD}
+    ports:
+      - 5432:5432
+  app:
+    container_name: app
+    restart: always
+    build: .
+    volumes:
+      - ./app:/app
+    ports:
+      - 5000:5000
+    environment:
+      - FLASK_APP=hello.py
+      - FLASK_ENV=development
+    command: flask run --host=0.0.0.0
+    depends_on:
+      - postgres
+
