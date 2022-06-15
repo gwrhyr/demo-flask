@@ -15,4 +15,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 
 @app.route("/")
 def hello():
-    return "<p>Hello, World!</p>"
+    return "<p>Hello, World?</p>"
