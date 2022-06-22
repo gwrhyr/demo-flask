@@ -5,19 +5,19 @@ version: "3.9"
 services:
   postgres:
     container_name: postgres
-    #restart: always
+    restart: always
     image: postgres
     volumes:
       - ./postgres-data/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=${DB}
+      - POSTGRES_DB=testdb
       - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=${PASSWORD}
+      - POSTGRES_PASSWORD=password
     ports:
       - 5432:5432
   app:
     container_name: app
-    #restart: always
+    restart: always
     build: .
     volumes:
       - ./app:/app
