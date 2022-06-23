@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>ブログアプリケーションです</h1>
+    <a href="/create" role="button">新規登録画面</a>
+    {% for post in posts %}
     <article>
-        <h2>記事１</h2>
-        <p>作成日時：　2021/6/22 10:00</p>
-        <p>こちらは記事１の内容です</p>
+        <h2>{{ post.title }}</h2>
+        <a href="/{{post.id}}/update" role="button">編集</a>
+        <a href="/{{post.id}}/delete" role="button">削除</a>
+        <p>作成日時：　{{ post.create_at }}</p>
+        <p>{{ post.body }}</p>
     </article>
-    <article>
-        <h2>記事２</h2>
-        <p>作成日時：　2021/6/23 10:00</p>
-        <p>こちらは記事２の内容です</p>
-    </article>
+    {% endfor %}
+    
 {% endblock %}
