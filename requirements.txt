@@ -4,3 +4,4 @@ flask-sqlalchemy
 sqlalchemy-utils
 flask_script
 pytz
+flask_login
